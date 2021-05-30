@@ -18,7 +18,7 @@ void *sumOf(void *arg)
     sum = n1+n2;
 
     printf("Sum => %d + %d = %d\n",n1,n2,sum);
-    sleep(3);
+    
     printf("End of thread\n");
 
 
