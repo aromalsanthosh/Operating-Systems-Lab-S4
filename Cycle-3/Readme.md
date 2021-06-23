@@ -2,7 +2,7 @@
 
 1. Find Average Turn Around Time & Average Waiting Time for the following CPU Scheduling algorithms.<br>
    
-    * FCFS <br> 👉[**Code**]()  👉🏻[**Output**]()
+    * FCFS <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/1_FCFS.c)  👉🏻[**Output**](/Cycle-3/images/fcfs.png)
     * SJF <br> 👉[**Code**]()  👉🏻[**Output**]()
     * Priority <br> 👉[**Code**]()  👉🏻[**Output**]()
     * Round Robin <br> 👉[**Code**]()  👉🏻[**Output**]()
