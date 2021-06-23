@@ -9,3 +9,4 @@ This repository contains programs done as a part of KTU S4 Operating Systems Lab
 ## 👉🏻[Cycle-2](Cycle-2)
 
 ## 👉🏻[Cycle-3](Cycle-3)
+ - [Job Scheduling Algorithms](Cycle-3)
