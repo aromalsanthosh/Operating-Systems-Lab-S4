@@ -1,9 +1,9 @@
 /*First in, first out (FIFO), also known as first come, first served (FCFS), is the simplest scheduling algorithm.
- FIFO simply queues processes in the order tharrivalTime they arrive in the ready queue.
- In this, the process tharrivalTime comes first will be executed first and next process starts only after the previous gets fully executed.*/
+ FIFO simply queues processes in the order of the arrival Time they arrive in the ready queue.
+ In this, the process the arrival Time comes first will be executed first and next process starts only after the previous gets fully executed.*/
 
 
-//Shortest Job First-nonpreemptive algorithm with different arrival time
+//FCFS -nonpreemptive algorithm with different arrival time
    
 #include<stdio.h>
 
