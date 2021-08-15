@@ -4,7 +4,7 @@
    
     * FCFS <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/1_FCFS.c)  👉🏻[**Output**](/Cycle-3/images/fcfs.png)
     * SJF <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/2_SJF.c)  👉🏻[**Output**](/Cycle-3/images/sjf.png)
-    * Priority <br> 👉[**Code**]()  👉🏻[**Output**]()
+    * Priority <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/2_SJF.c)  👉🏻[**Output**](/Cycle-3/images/priority.png)
     * Round Robin <br> 👉[**Code**]()  👉🏻[**Output**]()
     <br>
     
