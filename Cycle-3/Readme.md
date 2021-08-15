@@ -5,7 +5,7 @@
    
     * FCFS <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/1_FCFS.c)  👉🏻[**Output**](/Cycle-3/images/fcfs.png)
     * SJF <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/2_SJF.c)  👉🏻[**Output**](/Cycle-3/images/sjf.png)
-    * Round Robin (Quantum Time - 4ms) <br> 👉[**Code**]()  👉🏻[**Output**]()
+    * Round Robin (Quantum Time - 4ms) <br> 👉[**Code**](/Cycle-3/CPU-Scheduling/4_Round-Robin.c)  👉🏻[**Output**](/Cycle-3/images/round.png)
     <br>
     
       | Process | Arrival Time | Burst Time  |
