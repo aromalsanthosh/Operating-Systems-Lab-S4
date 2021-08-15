@@ -1,123 +1,87 @@
 /* 
-    Priority scheduling with different arrival time-nonpreemptive
+    Non Premptive Priority Scheduling
 */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
 
-struct process
-{
-    int pid;
+int i, j, n;
+float tatAvg, wtAvg;
+
+struct Process {
+    int pId;
     int bt;
-    int at;
-    int ct;
-    int wt;
-    int tat;
     int priority;
 };
 
-int main()
-{
-    int i,j,n,total_wt=0,total_tat=0;
-    float avg_wt,avg_tat;
-
-    printf("Enter total number of processes : ");
-    scanf("%d",&n);
-    struct process proc[n],temp;
-    printf("Enter Process-id, Arrival-Time, Burst-time and Priority for each process\n");
-
-    for(i=0; i<n; i++)
+void read(struct Process p[]) {
+    printf("\n");
+    printf("Enter the Burst Time, Priority Of Each Process :\n");
+    printf("\n");
+    for (i = 0; i < n; ++i) 
     {
-        printf("Process %d : ",i+1);
-        scanf("%d %d %d %d",&proc[i].pid,&proc[i].at,&proc[i].bt,&proc[i].priority);
+        p[i].pId = i + 1;
+        printf("Process %d: ", p[i].pId);
+        scanf("%d %d", &p[i].bt, &p[i].priority);
+
     }
+}
 
-    for(i=0; i<n-1; i++)
-    {
-        for(j=i+1; j<n; j++)
-        {
-            //first sorting according to arrival time
-            if(proc[i].at > proc[j].at)
-            {
-                temp = proc[i];
-                proc[i] = proc[j];
-                proc[j] = temp;
-            }
-            //if arrival-time is same
-            if(proc[i].at == proc[j].at)
-            {
-                //then sort according to priority
-                if(proc[i].priority > proc[j].priority)
-                {
-                    temp = proc[i];
-                    proc[i] = proc[j];
-                    proc[j] = temp;
-                }
-                //if priority is also same
-            }
-            if(proc[i].at == proc[j].at && proc[i].priority == proc[j].priority)
-            {
-                if(proc[i].pid > proc[j].pid)
-                {
-                    temp = proc[i];
-                    proc[i] = proc[j];
-                    proc[j] = temp;
-                }
-            }
+void display(struct Process p[], int wt[], int tat[]) {
+    printf("\n-------------------------------------------------------------------");
+    printf("\nProcessID | BurstTime | Priority | Waiting time | Turn Around Time\n");
+    printf("---------------------------------------------------------------------\n");
+    for (i = 0; i < n; ++i) {
+        printf("%5d\t\t%d\t%4d\t\t%d\t\t%d\n", p[i].pId, p[i].bt, p[i].priority, wt[i], tat[i]);
+    }
+    printf("\nAverage Waiting Time: %.3f", wtAvg);
+    printf("\naverage Turnaround Time: %.3f", tatAvg);
+    printf("\n");
+}
 
+void sort(struct Process p[]) {
+    struct Process temp;
+    for (i = 0; i < n - 1; ++i) {
+        for (j = 0; j < n - 1 - i; ++j) {
+            if (p[j].priority > p[j + 1].priority) {
+                temp = p[j];
+                p[j] = p[j + 1];
+                p[j + 1] = temp;
+            }
         }
     }
+}
 
-    proc[0].ct = (proc[0].bt+proc[0].at);
-    for(i=1; i<n; i++)
-    {
-        proc[i].ct = proc[i-1].ct + proc[i].bt;
+void findWaitingTime(struct Process p[], int wt[]) {
+    wt[0] = 0;
+    int wtSum = 0;
+    for (i = 1; i < n; ++i) {
+        wt[i] = wt[i - 1] + p[i - 1].bt;
+        wtSum += wt[i];
     }
+    wtAvg = (float)wtSum / n;
+}
 
-    for(i=0; i<n; i++)
-    {
-        proc[i].tat = proc[i].ct - proc[i].at;
+void findTurnAroundtime(struct Process p[], int tat[], int wt[]) {
+    int tatSum = 0;
+    for (i = 0; i < n; ++i) {
+        tat[i] = p[i].bt + wt[i];
+        tatSum += tat[i];
     }
-    for(i=0; i<n; i++)
-    {
-        proc[i].wt = proc[i].tat - proc[i].bt;
-    }
+    tatAvg = (float)tatSum / n;
+}
 
-    // for(i=1; i<n; i++)
-    // {
-    //     proc[i].ct = proc[i-1].ct + proc[i].bt;
-    //     proc[i].tat = proc[i].ct - proc[i].at;
-    //     proc[i].wt = proc[i].tat - proc[i].bt;
-    // }
-
-    long int waiting_total=0,turn_around_total=0;
-
-    for(i=0;i<n;i++)
-    {
-        waiting_total += proc[i].wt;
-        turn_around_total += proc[i].tat;
-    }
-
-    float avg_waiting_time = (float)waiting_total/(float)n;
-
-    float avg_turn_around_time = (float)turn_around_total/(float)n;
-
-    //printf("Process\t\tarrival-time\t\tBurst time\t\tpriority\t\twaiting time\t\tTurn_around_time\n");
-
-
-    printf("\n-----------------------------------------------------------------------------------------");
-    printf("\nProcesses  Arrival Time    Burst Time   Priority  Waiting Time  Turn-Around Time");
-    printf("\n-----------------------------------------------------------------------------------------");
-
-
-    for(i=0; i<n; i++)
-    {
-        printf("\n%6d  %8d  %13d  %14d  %15d %15d",proc[i].pid,proc[i].at,proc[i].bt,proc[i].priority,proc[i].wt,proc[i].tat);
-    }
-
-    printf("\nAverage waiting time = %.3f\n",avg_waiting_time);
-
-    printf("Average turn around time = %.3f\n",avg_turn_around_time);
+int main()
+{
+    struct Process p[20];           /* Array object for the structure */
+    int wt[20], tat[20];
+    printf("Enter Number of Processes:");
+    scanf("%d", &n);
+    read(p);
+    sort(p);
+    findWaitingTime(p, wt);
+    findTurnAroundtime(p, tat, wt);
+    display(p, wt, tat);
 
     return 0;
-  }
+}
+
