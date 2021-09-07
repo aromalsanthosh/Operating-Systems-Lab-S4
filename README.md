@@ -10,3 +10,4 @@ This repository contains programs done as a part of KTU S4 Operating Systems Lab
 
 ## 👉🏻[Cycle-3](Cycle-3)
  - [CPU Scheduling](Cycle-3)
+ - [Produce Consumer Problem](Cycle-3)
