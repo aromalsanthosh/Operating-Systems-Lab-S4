@@ -1,5 +1,5 @@
 //C Program to create a thread called add, which access two integers from the user and print the sum.
-
+// Use 'cc -pthread 2_single-thread.c' or 'gcc -pthread 2_single-thread.c' to compile
 #include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
